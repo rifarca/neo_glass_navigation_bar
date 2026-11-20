@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:neo_glass_navigator/neo_glass_navigator.dart';
+import 'package:neo_glass_navigation_bar/neo_glass_navigation_bar.dart';
 import 'home_tab.dart';
 
 void main() {
@@ -12,7 +12,7 @@ class GeeslyLiquidGlassApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Geesly – NeoGlassNavigator Demo',
+      title: 'Geesly – NeoGlassNavigationBar Demo',
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.system,
       theme: ThemeData(
@@ -65,10 +65,10 @@ class _GeeslyMainScreenState extends State<GeeslyMainScreen> {
             ),
           ),
 
-          // CAPA FLOTANTE: NeoGlassNavigator con Stack multicapa Liquid Glass
+          // CAPA FLOTANTE: NeoGlassNavigationBar con Stack multicapa Liquid Glass
           Align(
             alignment: Alignment.bottomCenter,
-            child: NeoGlassNavigator(
+            child: NeoGlassNavigationBar(
               currentIndex: _currentIndex,
               onTap: _selectTab,
               items: const [

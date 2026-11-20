@@ -1,6 +1,6 @@
-# neo_glass_navigator
+# neo_glass_navigation_bar
 
-Paquete Flutter que implementa **`NeoGlassNavigator`**, un navegador inferior flotante con estética **iOS Liquid Glass** construido íntegramente sobre un **`Stack` multicapa**, donde cada capa aporta desenfoque (`BackdropFilter`), transparencia graduada, bordes redondeados y reflejos especulares.
+Paquete Flutter que implementa **`NeoGlassNavigationBar`**, un navegador inferior flotante con estética **iOS Liquid Glass** construido íntegramente sobre un **`Stack` multicapa**, donde cada capa aporta desenfoque (`BackdropFilter`), transparencia graduada, bordes redondeados y reflejos especulares.
 
 ## Arquitectura por capas (`Stack`)
 
@@ -14,7 +14,7 @@ Paquete Flutter que implementa **`NeoGlassNavigator`**, un navegador inferior fl
 
 ```dart
 import 'package:flutter/material.dart';
-import 'package:neo_glass_navigator/neo_glass_navigator.dart';
+import 'package:neo_glass_navigation_bar/neo_glass_navigation_bar.dart';
 
 Scaffold(
   extendBody: true,
@@ -23,7 +23,7 @@ Scaffold(
       Positioned.fill(child: currentPage),
       Align(
         alignment: Alignment.bottomCenter,
-        child: NeoGlassNavigator(
+        child: NeoGlassNavigationBar(
           currentIndex: currentIndex,
           onTap: (index) => setState(() => currentIndex = index),
           items: const [

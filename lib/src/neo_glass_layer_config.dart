@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// Configuración individual de cada capa translúcida dentro del [Stack]
-/// de [NeoGlassNavigator] para lograr el efecto Liquid Glass de iOS.
+/// de [NeoGlassNavigationBar] para lograr el efecto Liquid Glass de iOS.
 class NeoGlassLayerConfig {
   final double blurSigmaX;
   final double blurSigmaY;

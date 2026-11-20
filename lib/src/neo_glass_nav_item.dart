@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-/// Modelo de cada destino dentro de [NeoGlassNavigator].
+/// Modelo de cada destino dentro de [NeoGlassNavigationBar].
 class NeoGlassNavItem {
   /// Texto descriptivo debajo del icono.
   final String label;

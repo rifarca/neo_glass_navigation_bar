@@ -1,5 +1,5 @@
-name: neo_glass_navigator_example
-description: Example app showcasing NeoGlassNavigator with Geesly HomeTab.
+name: neo_glass_navigation_bar_example
+description: Example app showcasing NeoGlassNavigationBar with Geesly HomeTab.
 publish_to: 'none'
 
 environment:
@@ -8,7 +8,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  neo_glass_navigator:
+  neo_glass_navigatin_bar:
     path: ../
 
 dev_dependencies:

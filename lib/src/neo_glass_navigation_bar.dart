@@ -6,7 +6,7 @@ import 'neo_glass_surface.dart';
 
 /// Barra de navegación inferior flotante con efecto **iOS Liquid Glass**,
 /// construida sobre un [Stack] multicapa con desenfoque y bordes redondeados.
-class NeoGlassNavigator extends StatelessWidget {
+class NeoGlassNavigationBar extends StatelessWidget {
   /// Índice actualmente seleccionado.
   final int currentIndex;
 
@@ -54,7 +54,7 @@ class NeoGlassNavigator extends StatelessWidget {
   /// Curva de animación de la cápsula líquida.
   final Curve animationCurve;
 
-  const NeoGlassNavigator({
+  const NeoGlassNavigationBar({
     super.key,
     required this.currentIndex,
     required this.onTap,
@@ -71,7 +71,7 @@ class NeoGlassNavigator extends StatelessWidget {
     this.enableHaptics = true,
     this.animationDuration = const Duration(milliseconds: 300),
     this.animationCurve = Curves.easeOutCubic,
-  }) : assert(items.length >= 2, 'NeoGlassNavigator requiere al menos 2 ítems.'),
+  }) : assert(items.length >= 2, 'NeoGlassNavigationBar requiere al menos 2 ítems.'),
        assert(
          currentIndex >= 0 && currentIndex < items.length,
          'currentIndex debe estar dentro del rango de items.',
