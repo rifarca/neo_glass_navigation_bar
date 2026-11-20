@@ -8,6 +8,12 @@ and this project adheres to \[Semantic Versioning]\(<https://semver.org/spec/v2.
 
 \## \\\[0.1.5] - 2026-11-20
 
+### ###Added
+
+- change material_ui into replace of material 
+
+\## \\\[0.1.4] - 2026-11-20
+
 \### Added
 
 \- **Direct Blur & Transparency Shortcuts:** Added `blurSigma` and `glassOpacity` properties directly on `NeoGlassNavigator` to adjust the base glass effect without instantiating a full `NeoGlassLayerConfig`.

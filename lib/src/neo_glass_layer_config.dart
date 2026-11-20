@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// Configuración individual de cada capa translúcida dentro del [Stack]
 /// de [NeoGlassNavigationBar] para lograr el efecto Liquid Glass de iOS.
