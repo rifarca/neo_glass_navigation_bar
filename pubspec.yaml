@@ -1,7 +1,7 @@
 name: neo_glass_navigator
 description: A customizable iOS Liquid Glass bottom navigation bar built with multi-layer Stack architecture, rounded blurred surfaces, and specular glass highlights for Flutter.
-version: 0.1.0
-homepage: https://github.com/example/neo_glass_navigator
+version: 0.1.1
+repository: https://github.com/rifarca/neo_glass_navigation_bar
 
 environment:
   sdk: ">=3.3.0 <4.0.0"

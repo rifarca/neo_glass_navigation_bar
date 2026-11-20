@@ -3,31 +3,14 @@ import 'package:flutter/material.dart';
 /// Configuración individual de cada capa translúcida dentro del [Stack]
 /// de [NeoGlassNavigator] para lograr el efecto Liquid Glass de iOS.
 class NeoGlassLayerConfig {
-  /// Intensidad de desenfoque horizontal (`ImageFilter.blur`).
   final double blurSigmaX;
-
-  /// Intensidad de desenfoque vertical (`ImageFilter.blur`).
   final double blurSigmaY;
-
-  /// Color base del tinte del cristal.
   final Color tintColor;
-
-  /// Opacidad principal del tinte (0.0 a 1.0).
   final double opacity;
-
-  /// Radio de redondeo de la capa.
   final double borderRadius;
-
-  /// Color del contorno de refracción.
   final Color borderColor;
-
-  /// Grosor del contorno de refracción.
   final double borderWidth;
-
-  /// Degradado especular opcional para simular reflejo líquido superior.
   final List<Color>? gradientColors;
-
-  /// Si es `true`, aplica el filtro de desenfoque de fondo (`BackdropFilter`).
   final bool enableBlur;
 
   const NeoGlassLayerConfig({
@@ -42,80 +25,105 @@ class NeoGlassLayerConfig {
     this.enableBlur = true,
   });
 
-  /// Preset claro inspirado en iOS Liquid Glass.
   factory NeoGlassLayerConfig.iosLightBase({
     double borderRadius = 32.0,
     double blur = 24.0,
+    double opacity = 0.28,
   }) {
     return NeoGlassLayerConfig(
       blurSigmaX: blur,
       blurSigmaY: blur,
       tintColor: Colors.white,
-      opacity: 0.28,
+      opacity: opacity,
       borderRadius: borderRadius,
       borderColor: const Color(0x88FFFFFF),
       borderWidth: 1.25,
       gradientColors: [
-        Colors.white.withValues(alpha: 0.44),
-        Colors.white.withValues(alpha: 0.16),
-        Colors.white.withValues(alpha: 0.24),
+        Colors.white.withValues(alpha: (opacity + 0.16).clamp(0.0, 1.0)),
+        Colors.white.withValues(alpha: (opacity * 0.55).clamp(0.0, 1.0)),
+        Colors.white.withValues(alpha: (opacity * 0.85).clamp(0.0, 1.0)),
       ],
     );
   }
 
-  /// Preset oscuro inspirado en iOS Liquid Glass.
   factory NeoGlassLayerConfig.iosDarkBase({
     double borderRadius = 32.0,
     double blur = 24.0,
+    double opacity = 0.42,
   }) {
     return NeoGlassLayerConfig(
       blurSigmaX: blur,
       blurSigmaY: blur,
       tintColor: const Color(0xFF1C1C1E),
-      opacity: 0.42,
+      opacity: opacity,
       borderRadius: borderRadius,
       borderColor: const Color(0x3DFFFFFF),
       borderWidth: 1.1,
       gradientColors: [
         Colors.white.withValues(alpha: 0.16),
-        const Color(0xFF1C1C1E).withValues(alpha: 0.45),
+        const Color(0xFF1C1C1E).withValues(alpha: opacity.clamp(0.0, 1.0)),
         Colors.white.withValues(alpha: 0.08),
       ],
     );
   }
 
-  /// Preset para la cápsula activa (*pill*) que flota dentro del navigator.
   factory NeoGlassLayerConfig.iosActivePill({
     required bool isDark,
     double borderRadius = 24.0,
+    double blur = 12.0,
+    double? opacity,
   }) {
     if (isDark) {
+      final resolvedOpacity = opacity ?? 0.16;
       return NeoGlassLayerConfig(
-        blurSigmaX: 12.0,
-        blurSigmaY: 12.0,
+        blurSigmaX: blur,
+        blurSigmaY: blur,
         tintColor: Colors.white,
-        opacity: 0.16,
+        opacity: resolvedOpacity,
         borderRadius: borderRadius,
         borderColor: const Color(0x4DFFFFFF),
         borderWidth: 1.0,
         gradientColors: [
-          Colors.white.withValues(alpha: 0.24),
-          Colors.white.withValues(alpha: 0.08),
+          Colors.white
+              .withValues(alpha: (resolvedOpacity + 0.08).clamp(0.0, 1.0)),
+          Colors.white
+              .withValues(alpha: (resolvedOpacity * 0.5).clamp(0.0, 1.0)),
         ],
       );
     }
 
+    final resolvedOpacity = opacity ?? 0.48;
     return NeoGlassLayerConfig(
-      blurSigmaX: 12.0,
-      blurSigmaY: 12.0,
+      blurSigmaX: blur,
+      blurSigmaY: blur,
       tintColor: Colors.white,
-      opacity: 0.48,
+      opacity: resolvedOpacity,
       borderRadius: borderRadius,
       borderColor: const Color(0xAAFFFFFF),
       borderWidth: 1.1,
       gradientColors: [
-        Colors.white.withValues(alpha: 0.68),
-        Colors.white.withValues(alpha: 0.30),
+        Colors.white
+            .withValues(alpha: (resolvedOpacity + 0.20).clamp(0.0, 1.0)),
+        Colors.white
+            .withValues(alpha: (resolvedOpacity * 0.62).clamp(0.0, 1.0)),
+      ],
+    );
+  }
+
+  factory NeoGlassLayerConfig.iosHover({
+    required bool isDark,
+    double borderRadius = 22.0,
+  }) {
+    return NeoGlassLayerConfig(
+      enableBlur: false,
+      tintColor: Colors.white,
+      opacity: isDark ? 0.10 : 0.22,
+      borderRadius: borderRadius,
+      borderColor: isDark ? const Color(0x33FFFFFF) : const Color(0x77FFFFFF),
+      borderWidth: 0.9,
+      gradientColors: [
+        Colors.white.withValues(alpha: isDark ? 0.14 : 0.30),
+        Colors.white.withValues(alpha: isDark ? 0.04 : 0.10),
       ],
     );
   }
